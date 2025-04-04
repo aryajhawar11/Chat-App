@@ -20,12 +20,14 @@ const Login = () => {
           headers:{
             'Content-Type':'application/json'
           },
-            withCredentials:true
           
+          withCredentials:true
         });
+        
         navigate("/")
           console.log(res.data)
           dispatch(setAuthUser(res.data))
+          localStorage.setItem('authUser', JSON.stringify(res.data));
       } catch (error) {
         toast.error(error.response.data.message)
         console.log(error)
